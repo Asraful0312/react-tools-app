@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "ClashDisplay-Variable";
+  src: url("/fonts/clash display/ClashDisplay-Variable.woff2") format("woff2"),
+    url("/fonts/clash display/ClashDisplay-Variable.woff") format("woff"),
+    url("/fonts/clash display/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+}
+
+@font-face {
+  font-family: "Satoshi-Variable";
+  src: url("/fonts/satoshi/Satoshi-Variable.woff2") format("woff2"),
+    url("/fonts/satoshi/Satoshi-Variable.woff") format("woff"),
+    url("/fonts/satoshi/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+body {
+  @apply font-satoshi;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-clash-display;
+}
+
+.blur-glass {
+  backdrop-filter: blur(3px); /* Adjust the blur radius as needed */
+  background-color: rgba(200, 200, 200, 0.5);
+  /* Adjust the background color and opacity */
+}
+
+.text-gradient-1 {
+  background-image: linear-gradient(43deg, #2661fa 5%, #32ddb4 50%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-green {
+  background-image: linear-gradient(43deg, #38a598 5%, #2ccda6 50%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-1 {
+  background: rgb(22, 76, 217);
+  background: linear-gradient(95deg, #164cd9 100%, #32aadd 100%);
+  transition: all 1s;
+}
+
+.bg-gradient-2 {
+  background: rgb(22, 76, 217);
+  background: linear-gradient(95deg, #164cd9 100%, #32aadd 90%);
+}
+
+.bg-gradient-3 {
+  background: rgb(38, 97, 250);
+  background: linear-gradient(
+    56deg,
+    rgba(38, 97, 250, 1) 0%,
+    rgba(50, 221, 180, 1) 100%
+  );
+}
+
+.bg-gradient-1:hover {
+  background: rgb(22, 76, 217);
+  background: linear-gradient(95deg, #1a45b3 100%, #208bb9 100%);
+}
+
+.tool-suggetion {
+  border-radius: 16px;
+  background: white;
+  position: relative;
+}
+
+.tool-suggetion::before {
+  content: "";
+  border-radius: 16px;
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  margin: -2px;
+  background: linear-gradient(
+    56deg,
+    rgba(38, 97, 250, 1) 0%,
+    rgba(50, 221, 180, 1) 100%
+  );
+}
+
+.text-input {
+  font-size: 16px;
+  outline: none;
+  padding-bottom: 9px;
+  width: 100%;
+}
+
+.input-label {
+  position: absolute;
+  left: 24px;
+  bottom: 16px;
+  color: #8c8c8c;
+  transition: all 0.3s;
+}
+
+.text-input:focus ~ .input-label,
+.text-input:not(:placeholder-shown).text-input:not(:focus) ~ .input-label {
+  bottom: 32px;
+  font-size: 12px;
+}
