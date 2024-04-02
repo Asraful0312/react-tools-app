@@ -35,7 +35,7 @@ const AiSearchBar = ({ setIsAiSearch }) => {
         </p>
         <form
           onSubmit={handleSubmit}
-          className={`flex items-center justify-between border border-strock rounded-[36px] w-full bg-white px-5 py-1 md:py-2 mb-10`}
+          className={`flex items-center justify-between border border-strock rounded-[36px] w-full bg-white px-5 py-2 mb-10`}
         >
           <input
             placeholder="Search..."

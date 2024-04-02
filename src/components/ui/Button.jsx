@@ -28,7 +28,7 @@ const buttonVariants = cva(
       variant: {
         primary: "bg-primary text-white ",
         orange: "bg-accentOrange text-white ",
-        secondry: "bg-secondry text-black border border-black ",
+        secondry: "bg-secondry text-black border border-black",
         gradient: "bg-gradient-1 text-white ",
       },
       size: {

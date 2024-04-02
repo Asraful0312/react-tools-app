@@ -18,7 +18,14 @@ const Details = () => {
           <Link to="/" className="font-bold">
             Homepage /
           </Link>
-          {state && <Link className="capitalize text-black/40">{state} /</Link>}
+          {state && (
+            <Link
+              to={`/category/${state}`}
+              className="capitalize text-black/40"
+            >
+              {state} /
+            </Link>
+          )}
           <Link className="capitalize text-black/40">{name}</Link>
         </div>
       )}

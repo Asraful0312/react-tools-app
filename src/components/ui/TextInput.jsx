@@ -8,13 +8,13 @@ const TextInput = ({ label, className, forgotpass, ...rest }) => {
         className
       )}
     >
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center w-full justify-between mt-4">
         <input
           {...rest}
           type="text"
           placeholder=""
           id="input"
-          className="text-input"
+          className="text-input w-full"
         />
         <label className="input-label " htmlFor="input">
           {label}

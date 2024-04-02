@@ -8,9 +8,7 @@ const MobileMenu = ({ isMobileMenu, setIsAiSearch, setIsMobileMenu }) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className={`bg-white absolute right-0 p-5 w-[300px] border border-strock rounded-xl flex flex-col gap-5 transition-all duration-300 top-14 xl:hidden z-[100] ${
-        isMobileMenu ? "visible opacity-100" : "invisible opacity-0"
-      }`}
+      className={`bg-white absolute right-0 p-5 w-[300px] border border-strock rounded-xl flex flex-col gap-5 transition-all duration-300 top-14 xl:hidden z-[100]`}
     >
       <div className="flex items-center justify-between gap-5">
         <Link to="/">
@@ -34,20 +32,32 @@ const MobileMenu = ({ isMobileMenu, setIsAiSearch, setIsMobileMenu }) => {
             className="flex items-center gap-2"
           >
             <img src="/icons/icons8-bot 1.png" alt="icons" />
-            <h3>Try AI Search</h3>
+            <h1 className="font-medium text-sm">Try AI Search</h1>
           </Button>
         )}
 
       {location.pathname !== "/signin" &&
         location.pathname !== "/signup" &&
         "/result/" && (
-          <Button variant="secondry" className="flex items-center gap-2">
+          <Button
+            to="/submit-tool"
+            variant="secondry"
+            className="flex items-center gap-2"
+            onClick={() => setIsMobileMenu(false)}
+          >
             <img src="/icons/plus.png" alt="icons" />
 
-            <h3>Submit Tool</h3>
+            <h1 className="font-medium text-sm ">Submit Tool</h1>
           </Button>
         )}
-      <Button variant="primary">Sign Up</Button>
+      <Button
+        to="/signup"
+        onClick={() => setIsMobileMenu(false)}
+        className="text-center"
+        variant="primary"
+      >
+        Sign Up
+      </Button>
     </div>
   );
 };

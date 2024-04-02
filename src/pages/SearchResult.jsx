@@ -3,11 +3,11 @@ import Button from "../components/ui/Button";
 
 const SearchResult = () => {
   return (
-    <section className="max-w-[620px] mx-auto flex justify-center py-12 ">
+    <section className="max-w-[620px] mx-auto flex justify-center py-12 px-5">
       <div className="w-full">
-        <h1 className="font-bold text-3xl mb-7">Search Results</h1>
-        <div className="border-t border-strock flex flex-col justify-between gap-10 ">
-          <div className="mt-7 px-5 pb-10 space-y-10 h-[500px] overflow-y-scroll">
+        <h1 className="font-bold text-3xl mb-7 ">Search Results</h1>
+        <div className="border-t border-strock flex flex-col justify-between gap-10">
+          <div className="mt-7 px-3 pb-10 space-y-10 h-[500px] overflow-y-scroll">
             {/* user message */}
             <div className="flex items-center justify-end">
               <div className="bg-gradient-2 p-3 rounded-2xl flex gap-10">
@@ -124,7 +124,7 @@ const SearchResult = () => {
           </div>
 
           <form
-            className={`flex items-center justify-between border border-strock rounded-[36px] w-full bg-white px-5 py-1 md:py-2 mb-10`}
+            className={`flex items-center justify-between border border-strock rounded-[36px] w-full bg-white px-5 py-2  mb-10`}
           >
             <input
               placeholder="Search..."

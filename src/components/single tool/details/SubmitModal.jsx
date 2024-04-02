@@ -19,7 +19,7 @@ const SubmitModal = ({ setIsModalActive, isModalActive }) => {
           </h1>
           <RxCross2
             onClick={() => setIsModalActive(false)}
-            className="text-xl text-black absolute right-0 -top-5"
+            className="text-xl text-black absolute right-0 -top-5 cursor-pointer"
           />
         </div>
         <p className="text-sm font-medium text-extraDarkGray mb-10">
@@ -27,7 +27,7 @@ const SubmitModal = ({ setIsModalActive, isModalActive }) => {
           marketers.
         </p>
         <form
-          className={`flex items-center justify-between border border-strock rounded-[36px] w-full bg-white pl-5 pr-1  py-1  mb-3`}
+          className={`flex items-center justify-between gap-4 border border-strock rounded-[36px] w-full bg-white pl-5 pr-1  py-1  mb-3`}
         >
           <input
             placeholder="Search..."

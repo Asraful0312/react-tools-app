@@ -18,6 +18,7 @@ const Header = () => {
   const [isAiSearch, setIsAiSearch] = useState(false);
   const location = useLocation();
   const refOne = useRef(null);
+  const menuRef = useRef();
 
   useEffect(() => {
     document.addEventListener("click", hideClickOnOutSide);
@@ -29,8 +30,21 @@ const Header = () => {
     }
   };
 
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMobileMenu(false); // Close the mobile menu
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <header className="py-4 border-b  border-strock px-5 lg:px-12  ">
+    <header className="border-b py-5 border-strock px-5 lg:px-12  ">
       <div className="flex  items-center justify-between ">
         <div
           onClick={() => setIsCollapes((prev) => !prev)}
@@ -53,7 +67,8 @@ const Header = () => {
         <div className="flex w-full items-center justify-end gap-2 lg:gap-8 relative">
           {location.pathname !== "/result/" &&
             location.pathname !== "/signin" &&
-            location.pathname !== "/signup" && (
+            location.pathname !== "/signup" &&
+            location.pathname !== "/submit-tool" && (
               <div ref={refOne} className="relative">
                 <TextInputIcon
                   onFocus={() => setIsSearchBarShow(true)}
@@ -96,49 +111,75 @@ const Header = () => {
               <CgMenuRight className="text-2xl" />
             )}
             {/* mobile menu */}
-            <MobileMenu
-              setIsAiSearch={setIsAiSearch}
-              setIsMobileMenu={setIsMobileMenu}
-              isMobileMenu={isMobileMenu}
-            />
+
+            <div
+              className={`transition-all duration-500 ${
+                isMobileMenu ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+              ref={menuRef}
+            >
+              <MobileMenu
+                setIsAiSearch={setIsAiSearch}
+                setIsMobileMenu={setIsMobileMenu}
+                isMobileMenu={isMobileMenu}
+              />
+            </div>
           </div>
           {/*  rigt side */}
-          <div className="xl:flex hidden items-center gap-2">
-            <img
-              className="cursor-pointer"
-              src="/icons/Frame 11.png"
-              alt="sun icon"
-            />
-            {/* buttons */}
-            {location.pathname !== "/result/" &&
-              location.pathname !== "/signin" &&
-              location.pathname !== "/signup" && (
-                <Button
-                  onClick={() => setIsAiSearch(true)}
-                  variant="gradient"
-                  className="flex items-center gap-2"
-                >
-                  <img src="/icons/icons8-bot 1.png" alt="icons" />
-                  <h3>Try AI Search</h3>
-                </Button>
-              )}
-            {location.pathname !== "/signin" &&
-              location.pathname !== "/signup" && (
-                <Button variant="secondry" className="flex items-center gap-2">
-                  <img src="/icons/plus.png" alt="icons" />
+          {location.pathname === "/submit-tool" && (
+            <div className="hidden xl:flex items-center gap-8">
+              <img
+                className="cursor-pointer"
+                src="/icons/Frame 11.png"
+                alt="sun icon"
+              />
+              <Button variant="primary">Close / Discard Changes</Button>
+            </div>
+          )}
+          {location.pathname !== "/submit-tool" && (
+            <div className="xl:flex hidden items-center gap-2">
+              <img
+                className="cursor-pointer"
+                src="/icons/Frame 11.png"
+                alt="sun icon"
+              />
+              {/* buttons */}
+              {location.pathname !== "/result/" &&
+                location.pathname !== "/signin" &&
+                location.pathname !== "/signup" && (
+                  <Button
+                    onClick={() => setIsAiSearch(true)}
+                    variant="gradient"
+                    className="flex items-center gap-2"
+                  >
+                    <img src="/icons/icons8-bot 1.png" alt="icons" />
+                    <h1 className="font-medium text-sm">Try AI Search</h1>
+                  </Button>
+                )}
+              {location.pathname !== "/signin" &&
+                location.pathname !== "/signup" && (
+                  <Button
+                    to="/submit-tool"
+                    variant="secondry"
+                    className="flex items-center gap-2"
+                  >
+                    <img src="/icons/plus.png" alt="icons" />
 
-                  <h3>Submit Tool</h3>
-                </Button>
-              )}
-            <Button variant="primary">Sign Up</Button>
-          </div>
+                    <h1 className="font-medium text-sm">Submit Tool</h1>
+                  </Button>
+                )}
+              <Button to="/signup" variant="primary">
+                Sign Up
+              </Button>
+            </div>
+          )}
         </div>
       </div>
       {/* mobile sidebar */}
       <div
-        className={`absolute flex items-start w-full md:w-[250px] xl:hidden top-[75px] h-screen bottom-0 inset-0 z-50 transition-all duration-500 ${
-          isCollapes ? "-translate-x-[380px]" : "translate-x-0"
-        }`}
+        className={`absolute flex items-start w-full md:w-[250px] xl:hidden  h-screen bottom-0 inset-0 z-50 transition-all duration-500 ${
+          location.pathname === "/" ? "top-[83px]" : "top-[72px]"
+        } ${isCollapes ? "-translate-x-[380px]" : "translate-x-0"}`}
       >
         <aside
           className={`flex border border-strock bg-white py-6 px-4 flex-col justify-between overflow-hidden transition-all duration-500 relative h-full `}
